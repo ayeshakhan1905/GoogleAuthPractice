@@ -37,7 +37,7 @@ router.get('/', (req, res) => {
 router.get('/auth/logout', (req, res) => {
     req.logout((err) => {
         if (!err) {
-            return res.redirect('/auth');
+            return res.redirect('/');
         }
         console.error('Logout error:', err);
         res.status(500).send('Error logging out');
