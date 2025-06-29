@@ -18,7 +18,7 @@ router.get('/auth/error', (req, res) => {
     res.send('Error logging in with Google');
 });
 
-router.get('/auth', (req, res) => {
+router.get('/', (req, res) => {
     res.send(`
         <h2>Login with Google</h2>
         <a href="/auth/google" style="
