@@ -2,9 +2,9 @@ const passport = require('passport');
 
 const router = require('express').Router();
 
-router.get('/google' , passport.authenticate('google', {scope : ['profile']}))
+router.get('/auth/google' , passport.authenticate('google', {scope : ['profile']}))
 
-router.get('/google/callback', passport.authenticate('google', { failureRedirect: "/auth/error" }), (req, res) => {
+router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: "/auth/error" }), (req, res) => {
     res.send(`
         <h2>Successfully logged in with Google ✅</h2>
         <form action="/auth/logout" method="GET">
@@ -14,11 +14,11 @@ router.get('/google/callback', passport.authenticate('google', { failureRedirect
 });
 
 
-router.get('/error', (req, res) => {
+router.get('/auth/error', (req, res) => {
     res.send('Error logging in with Google');
 });
 
-router.get('/', (req, res) => {
+router.get('/auth', (req, res) => {
     res.send(`
         <h2>Login with Google</h2>
         <a href="/auth/google" style="
@@ -34,7 +34,7 @@ router.get('/', (req, res) => {
 });
 
 
-router.get('/logout', (req, res) => {
+router.get('/auth/logout', (req, res) => {
     req.logout((err) => {
         if (!err) {
             return res.redirect('/auth');

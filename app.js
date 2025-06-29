@@ -22,7 +22,7 @@ app.use(passport.session())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/auth', require('./src/routes/authRoutes'));
+app.use('/', require('./src/routes/authRoutes'));
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
